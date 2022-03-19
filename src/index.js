@@ -4,12 +4,15 @@ import { render } from 'react-dom';
 import store, {loadBooks, deleteBook} from  './store';
 
 class App extends Component{
+    async componentDidMount(){
+        await this.props.startUp();
+    }
+
     async destroy(book){
         await this.props.delete(book);
     }
 
     render(){
-        this.props.startUp();
         const books = this.props.books;
         return (
             <div>
@@ -24,6 +27,7 @@ class App extends Component{
             </div>
         );
     };
+
 }
 
 const _App = connect(

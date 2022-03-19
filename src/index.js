@@ -1,32 +1,16 @@
-import axios from 'axios';
 import React, {Component} from 'react';
+import {connect, Provider} from "react-redux";
 import { render } from 'react-dom';
+import store, {loadBooks, deleteBook} from  './store';
 
 class App extends Component{
-    constructor(){
-        super();
-        this.state = {
-            books: []
-        }
-
-        this.destroy = this.destroy.bind(this);
-    }
-
-    async componentDidMount(){
-        const books = (await axios.get('/api/books')).data;
-        this.setState({books});
-    }
-
     async destroy(book){
-        console.log(book);
-        await axios.delete(`/api/books/${book.id}`);
-        console.log('after axios');
-        const books = this.state.books.filter(_book=>_book.id !== book.id);
-        this.setState({books});
+        await this.props.delete(book);
     }
 
     render(){
-        const books = this.state.books;
+        this.props.startUp();
+        const books = this.props.books;
         return (
             <div>
                 {books.map(book=>{
@@ -40,7 +24,20 @@ class App extends Component{
             </div>
         );
     };
-
 }
 
-render(<App />, document.querySelector('#root'));
+const _App = connect(
+    state=>state,
+    (dispatch)=>{
+        return{
+            startUp: ()=>{
+                dispatch(loadBooks());
+            },
+            delete: (book)=>{
+                dispatch(deleteBook(book));
+            }
+        }
+    }
+)(App);
+
+render(<Provider store={store}><_App/></Provider>, document.querySelector('#root'));

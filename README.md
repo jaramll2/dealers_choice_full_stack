@@ -1,5 +1,7 @@
 ### createdb dealers_choice_full_stack
 
+### https://jaramll2-to-read-list.herokuapp.com/
+
 # Build A FullStack App
 * build a simple Sequelize model and seed some data when the express application starts
 * build an express api GET route which can be used by the client to return data from your model

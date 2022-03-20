@@ -26,7 +26,7 @@ class App extends Component{
                     <Route path='/summary/:id' component={Summary}/>
                 </div>
             </HashRouter>
-        );s
+        );
     };
 
 }

@@ -7,7 +7,8 @@ class Form extends React.Component {
         super();
         this.state ={
             name: '',
-            author: '' 
+            author: '',
+            summary: '',
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -23,18 +24,23 @@ class Form extends React.Component {
     }
 
     render(){
-        const {name, author} = this.state;
+        const {name, author, summary} = this.state;
         const {onChange, onSubmit} = this;
 
         return(
             <div>
-                <h3>Add a Book To The List</h3>
+                <h3>Add A Book To The List</h3>
                 <form id='form' onSubmit={onSubmit}>
                     <label htmlFor="name">Name:</label><br/>
                     <input type='text' value={name}id='name' name='name' onChange={ onChange}/><br/>
+
                     <label htmlFor="author">Author:</label><br/>
                     <input type='text' value={author} id='author' name='author' onChange={onChange}/><br/>
-                    <button disabled={!name || !author} onClick={()=>this.props.add({name:this.state.name, author:this.state.author})}>Submit</button>
+
+                    <label htmlFor="summary">Summary:</label><br/>
+                    <input type='text' value={summary} id='summary' name='summary' onChange={onChange}/><br/>
+
+                    <button disabled={!name || !author || !summary} onClick={()=>this.props.add({name:this.state.name, author:this.state.author, summary: this.state.summary})}>Submit</button>
                 </form>
             </div>
         );

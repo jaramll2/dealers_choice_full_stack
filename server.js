@@ -6,7 +6,6 @@ const path = require('path');
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
 
 //ROUTES
 app.get('/api/books', async(req,res,next)=>{
@@ -21,7 +20,7 @@ app.get('/api/books', async(req,res,next)=>{
 
 app.post('/api/books',async(req,res,next)=>{
     try{
-        const newBook = await Book.create({name: req.body.name, author: req.body.author});
+        const newBook = await Book.create({name: req.body.name, author: req.body.author, summary: req.body.summary});
         res.status(201).send(newBook);
     }
     catch(err){

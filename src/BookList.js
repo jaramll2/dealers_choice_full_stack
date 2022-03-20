@@ -6,16 +6,20 @@ import { Link } from 'react-router-dom';
 const BookList = (props)=>{
     const books = props.books;
     return(
-        books.map(book=>{
-            return( 
-                <span key={book.id}>{book.name} by {book.author}<br/>
-                    <Link to={`/summary/${book.id}`}>Summary</Link>
-                    <br/>
-                    <button onClick={()=>props.delete(book)}>Remove From List</button>
-                    <br/>
-                </span>
-            )
-        })
+        <><h3>To Read List: </h3>
+        <div>
+            {books.map(book => {
+                return (
+                    <span key={book.id}>{book.name} by {book.author}<br />
+                        <Link to={`/summary/${book.id}`}>Summary</Link>
+                        <br />
+                        <button onClick={() => props.delete(book)}>Remove From List</button>
+                        <br />
+                    </span>
+                );
+            })}
+        </div>
+        </>
     )
 }
 

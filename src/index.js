@@ -5,6 +5,7 @@ import store, {loadBooks, deleteBook} from  './store';
 import {HashRouter, Route} from 'react-router-dom';
 import BookList from './BookList';
 import Summary from './Summary';
+import Form from './Form';
 
 class App extends Component{
     async componentDidMount(){
@@ -20,18 +21,9 @@ class App extends Component{
         return (
             <HashRouter>
                 <div>
-                    {/* {books.map(book=>{
-                        return( 
-                            <span key={book.id}>{book.name} by {book.author}<br/>
-                                <button onClick={()=>this.destroy(book)}>Remove From List</button>
-                                <br/>
-                            </span>
-                        )
-                    })} */}
-
+                    <Route exact path='/' component={Form}/>
                     <Route exact path= '/' component={() => <BookList books={books} delete = {deleteBook} />}/>
                     <Route path='/summary/:id' component={Summary}/>
-
                 </div>
             </HashRouter>
         );s
@@ -45,9 +37,6 @@ const _App = connect(
         return{
             startUp: ()=>{
                 dispatch(loadBooks());
-            },
-            delete: (book)=>{
-                dispatch(deleteBook(book));
             }
         }
     }

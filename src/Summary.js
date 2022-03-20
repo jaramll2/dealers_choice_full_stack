@@ -16,7 +16,7 @@ const Summary = (props)=> {
             <h3>by {book.author}</h3>
             <Link to='/'>Back</Link>
             <hr/>
-            <p>TEMP</p>
+            <p>TEMP --- Need to add book summaries</p>
         </div>
     );
 };

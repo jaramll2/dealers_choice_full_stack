@@ -8,6 +8,7 @@ const initalState = {
 
 const LOAD = 'LOAD';
 const DELETE = 'DELETE';
+const CREATE = 'CREATE';
 
 const reducer = (state = initalState, action)=>{
     if(action.type === LOAD){
@@ -16,6 +17,9 @@ const reducer = (state = initalState, action)=>{
     if(action.type === DELETE){
         const books = state.books.filter(_book=>_book.id !==action.book.id);
         state = {...state,books};
+    }
+    if(action.type === CREATE){
+        state = {...state, books: [...state.books, action.book]};
     }
 
     return state;
@@ -41,11 +45,22 @@ const deleteBook = (book)=>{
     }
 };
 
+const addBook = (newBook)=>{
+    return async(dispatch)=>{
+        const book = (await axios.post('/api/books', newBook)).data;
+        dispatch({ 
+            type: 'CREATE',
+            book
+        })
+    };
+};
+
 const store = createStore(reducer,applyMiddleware(thunk));
 
 export default store;
 
 export {
     loadBooks,
-    deleteBook
+    deleteBook,
+    addBook
 }

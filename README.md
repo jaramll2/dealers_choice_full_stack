@@ -2,6 +2,9 @@
 
 ### https://jaramll2-to-read-list.herokuapp.com/
 
+### Bugs
+When deleting an item from the list, the list scrolls to the top. The delete button did not result in this behavior before styling was added. Need to find a way to resolve issue.
+
 # Build A FullStack App
 * build a simple Sequelize model and seed some data when the express application starts
 * build an express api GET route which can be used by the client to return data from your model

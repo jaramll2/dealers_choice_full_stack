@@ -1,0 +1,44 @@
+#container{
+    display: flex;
+    justify-content: center;
+    height: 35rem;
+}
+
+textarea { 
+    resize: none; 
+    width: 20rem;
+}
+
+#form{
+    margin-top: 6rem;
+    padding-left: 8rem;
+    
+}
+
+#bookList{
+    padding-left: 8rem;
+    padding-right: 8rem;
+    overflow: auto;
+    width: 35rem;
+}
+
+#summary{
+    height: 10rem;
+}
+
+#summaryView{
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top:0px;
+}
+
+#summaryHeaders{
+    line-height: 2pt;
+}
+
+#summaryText{
+    margin-left: 10rem;
+    margin-right: 10rem;
+    margin-top: 3rem;
+}

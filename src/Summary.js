@@ -12,11 +12,15 @@ const Summary = (props)=> {
 
     return(
         <div>
-            <h2>{book.name}</h2>
-            <h3>by {book.author}</h3>
+            <div id ='summaryHeaders'>
+                <h2>{book.name}</h2>
+                <h3>by {book.author}</h3>
+            </div>
+            
             <Link to='/'>Back</Link>
             <hr/>
-            <p>{book.summary}</p>
+
+            <p id='summaryText'>{book.summary}</p>
         </div>
     );
 };

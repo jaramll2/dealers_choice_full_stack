@@ -20,11 +20,14 @@ class App extends Component{
         const books = this.props.books;
         return (
             <HashRouter>
-                <div>
+                <div id='container'>
                     <Route exact path='/' component={Form}/>
                     <Route exact path= '/' component={() => <BookList books={books} delete = {deleteBook} />}/>
+                </div>
+                <div id='summaryView'>
                     <Route path='/summary/:id' component={Summary}/>
                 </div>
+                
             </HashRouter>
         );
     };
